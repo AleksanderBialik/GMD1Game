@@ -4,44 +4,42 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-	[SerializeField] private float moveSpeed;
-	[SerializeField] private float jumpHeight;
-	[SerializeField] private float gravity;
-	[SerializeField] private float groundCheckDistance;
-	[SerializeField] private LayerMask groundMask;
-	
+    private CharacterController controller;
+    private Vector3 playerVelocity;
+    private bool groundedPlayer;
+    [SerializeField] private float playerSpeed = 2.0f;
+    [SerializeField] private float jumpHeight = 1.0f;
+    [SerializeField] private float gravityValue = -9.81f;
 
-	private Vector3 moveDirection;
-	private Vector3 velocity;
-	
+    private void Start()
+    {
+        controller = GetComponent<CharacterController>();
+    }
 
-	private CharacterController controller;
+    void Update()
+    {
+        groundedPlayer = controller.isGrounded;
+        if (groundedPlayer && playerVelocity.y < 0)
+        {
+            playerVelocity.y = -2f;
+        }
 
-	private void Start()
-	{
-		controller = GetComponent<CharacterController>();
-	}
+        float moveZ = Input.GetAxis("Vertical");
+        float moveX = Input.GetAxis("Horizontal");
 
-	private void Update()
-	{
-		Move();
-	}
+        Vector3 move = new Vector3(moveX, 0, moveZ);
 
-	private void Move()
-	{
-		float moveZ = Input.GetAxis("Vertical");
-		float moveX = Input.GetAxis("Horizontal");
+        move = transform.TransformDirection(move);
+        controller.Move(playerSpeed * Time.deltaTime * move);
 
-		moveDirection = new Vector3(moveX, 0, moveZ);
-		moveDirection *= moveSpeed;
-		moveDirection = transform.TransformDirection(moveDirection);
-		if (controller.isGrounded && Input.GetKeyDown(KeyCode.Space))
-		{
-			moveDirection.y = jumpHeight;
-		}
-		
-		
-		controller.Move(moveDirection * Time.deltaTime);
-	}
-	
+
+        // Changes the height position of the player..
+        if (Input.GetButtonDown("Jump") && groundedPlayer)
+        {
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        }
+
+        playerVelocity.y += gravityValue * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
+    }
 }
