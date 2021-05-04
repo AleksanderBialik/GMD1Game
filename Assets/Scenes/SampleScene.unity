@@ -657,7 +657,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2012916249}
   - component: {fileID: 2012916252}
-  - component: {fileID: 2012916251}
   - component: {fileID: 2012916250}
   m_Layer: 0
   m_Name: Camera
@@ -693,14 +692,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSens: 500
---- !u!81 &2012916251
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2012916248}
-  m_Enabled: 1
 --- !u!20 &2012916252
 Camera:
   m_ObjectHideFlags: 0

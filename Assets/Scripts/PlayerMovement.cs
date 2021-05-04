@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     private readonly int jumpHash = Animator.StringToHash("Jump");
     private Animator animator;
     private bool groundedPlayer;
+    private float num;
+    private float playerSpeedDiagonal;
     [SerializeField] private float playerSpeed = 2.0f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
@@ -19,10 +22,12 @@ public class PlayerMovement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        num = (float) Math.Sqrt(2);
     }
 
     void Update()
     {
+        
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -35,7 +40,17 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = new Vector3(moveX, 0, moveZ);
 
         move = transform.TransformDirection(move);
-        controller.Move(playerSpeed * Time.deltaTime * move);
+        if (moveZ != 0 && moveX != 0)
+        {
+            playerSpeedDiagonal = playerSpeed / num;
+            controller.Move(playerSpeedDiagonal * Time.deltaTime * move);
+        }
+        else
+        {
+            controller.Move(playerSpeed * Time.deltaTime * move);
+        }
+
+        
 
 
         // Changes the height position of the player..
