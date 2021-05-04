@@ -1,27 +1,12 @@
 fileFormatVersion: 2
-guid: 24dda79f13156f54ca4d958bc917300d
+guid: d74a978dc6272fb4ca5d7f2bdd71fdce
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: mixamo.com
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Peasant_Man_diffuse
-    second: {fileID: 2800000, guid: a1ac6daaef137f341ae788f0dda8c293, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Peasant_Man_normal
-    second: {fileID: 2800000, guid: 86d8d4e9c3f20c649bc8b68f0980d75d, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Peasant_Man_specular
-    second: {fileID: 2800000, guid: 9da3ab1afe914684287e8d37d45bb2a0, type: 3}
+    second: Running
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -50,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: mixamo.com
+      name: Running
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 37
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

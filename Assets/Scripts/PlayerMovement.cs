@@ -6,6 +6,10 @@ public class PlayerMovement : MonoBehaviour
 {
     private CharacterController controller;
     private Vector3 playerVelocity;
+    private readonly int speedHash = Animator.StringToHash("Speed");
+    private readonly int strafeHash = Animator.StringToHash("Strafe");
+    private readonly int jumpHash = Animator.StringToHash("Jump");
+    private Animator animator;
     private bool groundedPlayer;
     [SerializeField] private float playerSpeed = 2.0f;
     [SerializeField] private float jumpHeight = 1.0f;
@@ -14,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -37,9 +42,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && groundedPlayer)
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            animator.SetTrigger(jumpHash);
         }
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+        animator.SetFloat(speedHash, moveZ);
+        animator.SetFloat(strafeHash, moveX);
     }
 }
