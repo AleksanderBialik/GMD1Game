@@ -18,10 +18,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
     [SerializeField] private GameObject spawn;
+    
+    
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        
         animator = GetComponent<Animator>();
         num = (float) Math.Sqrt(2);
     }
@@ -50,21 +53,18 @@ public class PlayerMovement : MonoBehaviour
         {
             controller.Move(playerSpeed * Time.deltaTime * move);
         }
-
         
-
-
         // Changes the height position of the player..
         if (Input.GetButtonDown("Jump") && groundedPlayer)
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             animator.SetTrigger(jumpHash);
         }
-
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
         animator.SetFloat(speedHash, moveZ);
         animator.SetFloat(strafeHash, moveX);
+        
     }
 
     void TeleportPlayer()
