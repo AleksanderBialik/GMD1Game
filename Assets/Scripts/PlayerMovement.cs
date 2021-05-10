@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float playerSpeed = 2.0f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
+    [SerializeField] private GameObject spawn;
 
     private void Start()
     {
@@ -64,5 +65,16 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(playerVelocity * Time.deltaTime);
         animator.SetFloat(speedHash, moveZ);
         animator.SetFloat(strafeHash, moveX);
+    }
+
+    void TeleportPlayer()
+    {
+        Vector3 spawnPosition = spawn.transform.position;
+        spawnPosition.y += 2f;
+        controller.enabled = false;
+        transform.position = spawnPosition;
+        controller.enabled = true;
+
+
     }
 }
