@@ -6,14 +6,19 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController controller;
+    private Component playerSounds;
+    private Animator animator;
+    
     private Vector3 playerVelocity;
+    private Vector3 spawnPosition;
+    
     private readonly int speedHash = Animator.StringToHash("Speed");
     private readonly int strafeHash = Animator.StringToHash("Strafe");
     private readonly int jumpHash = Animator.StringToHash("Jump");
-    private Animator animator;
     private bool groundedPlayer;
     private float num;
     private float playerSpeedDiagonal;
+    
     [SerializeField] private float playerSpeed = 2.0f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
@@ -24,14 +29,13 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
-        
+        playerSounds = GetComponent<PlayerSounds>();
         animator = GetComponent<Animator>();
         num = (float) Math.Sqrt(2);
     }
 
     void Update()
     {
-        
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -69,12 +73,19 @@ public class PlayerMovement : MonoBehaviour
 
     void TeleportPlayer()
     {
-        Vector3 spawnPosition = spawn.transform.position;
+        spawnPosition = spawn.transform.position;
         spawnPosition.y += 2f;
+        playerSounds.SendMessage("Drop");
         controller.enabled = false;
         transform.position = spawnPosition;
         controller.enabled = true;
+    }
 
-
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.name == "Sphere")
+        {
+            TeleportPlayer();
+        }
     }
 }

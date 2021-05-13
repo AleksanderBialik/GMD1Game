@@ -11,6 +11,7 @@ public class RotateWithMouse : MonoBehaviour
     {
         player = transform.parent;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()

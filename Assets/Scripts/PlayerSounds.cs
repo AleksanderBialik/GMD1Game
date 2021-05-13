@@ -8,9 +8,12 @@ public class PlayerSounds : MonoBehaviour
     private AudioSource source;
     [SerializeField]public AudioClip[] runClips;
     [SerializeField] public AudioClip[] jumpClips;
+    [SerializeField] public AudioClip dropClip;
 
     [SerializeField] public float runningVolume;
     [SerializeField] public float jumpVolume;
+    [SerializeField] public float dropVolume;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -28,6 +31,11 @@ public class PlayerSounds : MonoBehaviour
     {
         AudioClip jumpingClip = GetRandomJumpClip();
         source.PlayOneShot(jumpingClip,jumpVolume);
+    }
+
+    private void Drop()
+    {
+        source.PlayOneShot(dropClip,dropVolume);
     }
 
     private AudioClip GetRandomRunClip()
