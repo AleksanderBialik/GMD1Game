@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerSounds : MonoBehaviour
 {
 
+    public AudioMixer audioMixer;
     private AudioSource source;
-    [SerializeField]public AudioClip[] runClips;
+    private CharacterController controller;
+    private PlayerMovement player;
+    [SerializeField]public AudioClip[] runStoneClips;
+    [SerializeField]public AudioClip[] runGroundClips;
     [SerializeField] public AudioClip[] jumpClips;
     [SerializeField] public AudioClip dropClip;
 
@@ -17,14 +22,19 @@ public class PlayerSounds : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        
+        controller = GetComponent<CharacterController>();
         source = GetComponent<AudioSource>();
+        player = GetComponent<PlayerMovement>();
     }
 
     private void Step()
     {
-        AudioClip runningClip = GetRandomRunClip();
-        source.PlayOneShot(runningClip, runningVolume);
+        if (controller.isGrounded)
+        {
+            AudioClip runningClip = GetRandomRunClip();
+            source.PlayOneShot(runningClip, runningVolume);
+        }
+        
     }
 
     private void Jump()
@@ -40,7 +50,15 @@ public class PlayerSounds : MonoBehaviour
 
     private AudioClip GetRandomRunClip()
     {
-        return runClips[UnityEngine.Random.Range(0, runClips.Length)];
+        if (player.surface == "Slope")
+        {
+            return runStoneClips[UnityEngine.Random.Range(0, runStoneClips.Length)];
+        }
+        else
+        {
+            return runGroundClips[UnityEngine.Random.Range(0, runGroundClips.Length)];
+        }
+
     }
     private AudioClip GetRandomJumpClip()
     {

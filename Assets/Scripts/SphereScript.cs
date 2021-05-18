@@ -23,6 +23,11 @@ public class SphereScript : MonoBehaviour
         {
             GameObject player = other.gameObject;
             player.SendMessage("TeleportPlayer");
+            Destroy(gameObject);
+        }
+        if (other.gameObject.name == "Ground")
+        {
+            Destroy(gameObject);
         }
 
         
