@@ -16,7 +16,6 @@ public class FinishScene : MonoBehaviour
 
     public void PlayAgain()
     {
-        Debug.Log("AGAIN");
         SceneManager.LoadScene("LEVEL1");
     }
 

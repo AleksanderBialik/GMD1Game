@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class Stopwatch : MonoBehaviour
 {
-    public float timer;
+    private float timer;
     public string time;
-    public float seconds;
-    public float minutes;
-    public float hours;
+    private float seconds;
+    private float minutes;
+    private float hours;
 
     [SerializeField] private Text text;
     

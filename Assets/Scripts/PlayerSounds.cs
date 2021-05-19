@@ -18,8 +18,7 @@ public class PlayerSounds : MonoBehaviour
     [SerializeField] public float runningVolume;
     [SerializeField] public float jumpVolume;
     [SerializeField] public float dropVolume;
-
-    // Start is called before the first frame update
+    
     void Awake()
     {
         controller = GetComponent<CharacterController>();

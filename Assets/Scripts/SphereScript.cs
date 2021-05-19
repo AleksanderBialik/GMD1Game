@@ -5,16 +5,17 @@ using UnityEngine;
 
 public class SphereScript : MonoBehaviour
 {
+    [SerializeField]private AudioSource effects;
     // Start is called before the first frame update
     void Start()
     {
-        
+        effects.volume = PlayerPrefs.GetFloat("effects");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        effects.volume = PlayerPrefs.GetFloat("effects");
     }
 
     private void OnCollisionEnter(Collision other)

@@ -10,7 +10,7 @@ public class ShowText : MonoBehaviour
     public string textValue;
     public TextMeshProUGUI textElement;
     [SerializeField]private AudioSource source;
-    private float startingAudioVolume = 1f;
+    [SerializeField]private float startingAudioVolume = 1f;
     [SerializeField] public AudioClip startingAudio;
     // Start is called before the first frame update
     void Start()

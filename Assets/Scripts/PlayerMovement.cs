@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -28,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     
     
 
-    private void Start()
+    void Awake()
     {
         controller = GetComponent<CharacterController>();
         playerSounds = GetComponent<PlayerSounds>();
@@ -72,10 +70,24 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(playerVelocity * Time.deltaTime);
         animator.SetFloat(speedHash, moveZ);
         animator.SetFloat(strafeHash, moveX);
-        
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            if (playerSpeed != 100f)
+            {
+                playerSpeed = 100f;
+            }
+            else
+            {
+                playerSpeed = 10f;
+            }
+
+
+        }
+
     }
 
-    void TeleportPlayer()
+    public void TeleportPlayer()
     {
         spawnPosition = spawn.transform.position;
         spawnPosition.y += 2f;
@@ -95,22 +107,5 @@ public class PlayerMovement : MonoBehaviour
         surface = hit.gameObject.name;
     }
     
-
-    // private bool IsGrounded()
-    // {
-    //     if (controller.isGrounded)
-    //     {
-    //         return true;
-    //     }
-    //     
-    //     Vector3 bottom = controller.transform.position - new Vector3(0, controller.height / 2, 0);
-    //     RaycastHit hit;
-    //     
-    //     if (Physics.Raycast(bottom, new Vector3(0, -1, 0), out hit, 0.5f))
-    //     {
-    //         controller.Move(new Vector3(0, -hit.distance, 0));
-    //         return true;
-    //     }
-    //     return false;
-    // }
+    
 }
