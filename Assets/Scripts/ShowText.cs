@@ -9,27 +9,37 @@ public class ShowText : MonoBehaviour
 
     public string textValue;
     public TextMeshProUGUI textElement;
-    private AudioSource source;
+    [SerializeField]private AudioSource source;
     private float startingAudioVolume = 1f;
     [SerializeField] public AudioClip startingAudio;
     // Start is called before the first frame update
     void Start()
     {
         textElement.text = textValue;
-        source = GetComponent<AudioSource>();
         source.PlayOneShot(startingAudio,startingAudioVolume);
         StartCoroutine(DisableText());
     }
 
     IEnumerator DisableText()
     {
-        //Print the time of when the function is first called.
-        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+        float t = 0;
+        Color32 startColor = new Color32(255,255,255,0);
+        Color32 endColor = new Color32(255,255,255,255);
+        textElement.color = startColor;
+        while (t < 1)
+        {
+            textElement.color = Color32.Lerp(startColor, endColor, t);
+            t += Time.deltaTime / 3f;
+            yield return null;
+        }
 
-        //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(5);
-
-        //After we have waited 5 seconds print the time again.
-        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        t = 0;
+        yield return new WaitForSeconds(1);
+        while (t < 1)
+        {
+            textElement.color = Color32.Lerp(endColor, startColor, t);
+            t += Time.deltaTime / 3f;
+            yield return null;
+        }
     }
 }

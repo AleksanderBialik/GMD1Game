@@ -11,7 +11,7 @@ public class AudioVolume : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.SetFloat("music",0.03f);
+        PlayerPrefs.SetFloat("music",0.02f);
         musicSlider.value = PlayerPrefs.GetFloat("music");
         PlayerPrefs.Save();
     }
