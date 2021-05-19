@@ -1,17 +1,17 @@
 # GMD1Game
 Used unity assets:<br>
-https://assetstore.unity.com/packages/3d/environments/fantasy/medieval-tent-small-18736
-https://assetstore.unity.com/packages/3d/props/exterior/rock-package-118182
-https://assetstore.unity.com/packages/3d/vegetation/trees/mobile-tree-package-18866
-https://assetstore.unity.com/packages/3d/environments/landscapes/mountain-pack-30608
-https://assetstore.unity.com/packages/2d/textures-materials/roads/cobblestone-texture-tileable-18937
-https://assetstore.unity.com/packages/2d/textures-materials/roads/stone-floor-texture-tile-18683
-https://assetstore.unity.com/packages/2d/textures-materials/nature/nature-materials-vol-1-21113
-https://assetstore.unity.com/packages/2d/textures-materials/brick/high-quality-bricks-walls-49581
-https://assetstore.unity.com/packages/2d/textures-materials/sky/cope-free-skybox-pack-22252
-https://assetstore.unity.com/packages/audio/sound-fx/voices/attack-jump-hit-damage-human-sounds-32785
+https://assetstore.unity.com/packages/3d/environments/fantasy/medieval-tent-small-18736<br>
+https://assetstore.unity.com/packages/3d/props/exterior/rock-package-118182<br>
+https://assetstore.unity.com/packages/3d/vegetation/trees/mobile-tree-package-18866<br>
+https://assetstore.unity.com/packages/3d/environments/landscapes/mountain-pack-30608<br>
+https://assetstore.unity.com/packages/2d/textures-materials/roads/cobblestone-texture-tileable-18937<br>
+https://assetstore.unity.com/packages/2d/textures-materials/roads/stone-floor-texture-tile-18683<br>
+https://assetstore.unity.com/packages/2d/textures-materials/nature/nature-materials-vol-1-21113<br>
+https://assetstore.unity.com/packages/2d/textures-materials/brick/high-quality-bricks-walls-49581<br>
+https://assetstore.unity.com/packages/2d/textures-materials/sky/cope-free-skybox-pack-22252<br>
+https://assetstore.unity.com/packages/audio/sound-fx/voices/attack-jump-hit-damage-human-sounds-32785<br>
 https://assetstore.unity.com/packages/audio/sound-fx/foley/footsteps-essentials-189879<br>
-Campfire- https://www.davidstenfors.com/#!/downloads
+Campfire- https://www.davidstenfors.com/#!/downloads<br>
 
 Player model and animations were taken from mixamo.com<br>
 
